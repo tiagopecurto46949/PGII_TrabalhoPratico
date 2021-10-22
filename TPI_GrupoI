@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+#define CHAR_BIT (8)
+
+int charLeadingOnes (char value){
+
+int count = 0;  
+  for (unsigned int mask = 1 << (CHAR_BIT -1); mask >= 1  ; mask >>= 1 ){
+    if ((value & mask) == 0) return count;
+    else if ((value & mask)) count ++;
+  }
+return count;
+}
+
+void print_bin(unsigned char value)
+{
+    for (int i = sizeof(char) * 7; i >= 0; i--)
+        printf("%d", (value & (1 << i)) >> i );
+    putc('\n', stdout);
+}
+
+
+/*DÚVIDAS EM COMO CRIAR A FUNÇÃO DE TESTE*/
+void charLeadingOnesTEST (char inic){
+
+  for (; inic < '!' ; inic--){
+    printf("Contagem CharLeadingOnes: %c.", charLeadingOnes (inic) );
+    print_bin(inic);
+  }
+} 
+
+
+int main(void) {
+
+  return 0;
+}
